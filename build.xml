@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="joekit" basedir="." default="jar">
+  <property name="classes" value="build/classes"/>
+  <property name="srcDir" value="${basedir}/src"/>
+
+  <target name="init">
+    <mkdir dir="build"/>
+    <mkdir dir="build/classes"/>
+    <mkdir dir="build/lib"/>
+    <copy toDir="build/lib" failonerror="true" flatten="true">
+      <fileset dir="lib">
+        <include name="**/*.jar"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="clean">
+    <delete dir="build"/>
+  </target>
+
+  <path id="classpath">
+    <fileset dir="build/lib">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="classpath" depends="init">
+    <property name="cp" refid="classpath"/>
+    <echo message="export CLASSPATH=${cp}:${srcDir}"></echo>
+  </target>
+
+  <target name="compile" depends="init">
+    <javac debug="on" memoryMaximumSize="256m" memoryInitialSize="256m"
+           fork="true" destdir="${classes}" includeantruntime="false">
+      <compilerarg value="-Xlint"/>
+      <classpath refid="classpath"/>
+      <src path="src"/>
+      <src path="test"/>
+    </javac>
+  </target>
+
+  <target name="test" depends="compile">
+    <junit fork="true" showoutput="true">
+      <classpath>
+        <path>
+          <path refid="classpath"/>
+          <pathelement location="${classes}"/>
+        </path>
+      </classpath>
+      <formatter type="brief" usefile="false"/>
+      <test name="AllTests"/>
+    </junit>
+  </target>
+
+  <target name="jar" depends="test">
+    <jar destfile="build/${ant.project.name}.jar" basedir="build/classes">
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+        <attribute name="Implementation-Vendor" value="http://code.google.com/p/joekit"/>
+        <attribute name="Implementation-Title" value="${ant.project.name}"/>
+        <attribute name="Implementation-Version" value="0.1"/>
+        <attribute name="Main-Class" value="net.joekit.KmlWriterApplication"/>
+      </manifest>
+        <zipfileset excludes="META-INF/*.SF" src="lib/dom4j-1.6.1.jar"/>
+        <zipfileset excludes="META-INF/*.SF" src="lib/junit-4.9.jar"/>
+        <zipfileset excludes="META-INF/*.SF" src="lib/poi-3.7-20101029.jar"/>
+        <zipfileset excludes="META-INF/*.SF" src="lib/poi-ooxml-3.7-20101029.jar"/>
+        <zipfileset excludes="META-INF/*.SF" src="lib/poi-ooxml-schemas-3.7-20101029.jar"/>
+        <zipfileset excludes="META-INF/*.SF" src="lib/pojava-2.8.1.jar"/>
+        <zipfileset excludes="META-INF/*.SF" src="lib/xmlbeans-2.3.0.jar"/>
+    </jar>
+  </target>
+
+  <target name="run" depends="jar">
+    <java main="net.joekit.KmlWriterApplication"/>
+  </target>
+</project>
