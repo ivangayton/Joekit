@@ -29,6 +29,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  * Main class for the application.
  * 
+ * The various popups live here too.  
+ * 
+ * TODO The legend popup needs some work, so that people can modify the 
+ * color list for thier legends.
+ * 
  * @author Ivan
  */
 public class KmlWriterApplication extends JFrame 
@@ -161,7 +166,7 @@ public class KmlWriterApplication extends JFrame
       public void mouseClicked(java.awt.event.MouseEvent evt) {
         int catIndex = (evt.getY()-35)/20;
         System.out.println("x: " + evt.getX() + ", y: " + evt.getY() + ", index: " + catIndex);
-        // TODO make this do something about it
+        // TODO make this do something about it; users should be able to change the colorlist
       }
     });
     JScrollPane sP = new JScrollPane(legendLabel);

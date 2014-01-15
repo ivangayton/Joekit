@@ -51,8 +51,9 @@ class ListFileReader {
   
   boolean hasEpiWeek = false;
   
-  String[] latColumnNames = {"lat","latitude", "north", "northing"};
-  String[] longColumnNames = {"long", "longitude", "east", "easting"};
+  // TODO this should be using regex so that partial matches work
+  String[] latColumnNames = {"lat","latitude", "north", "northing", "ycoord"};
+  String[] longColumnNames = {"long", "lon", "longitude", "east", "easting", "xcoord"};
   String[] nameColumnNames = {"name", "full_name", "full_name_",
   		"id", "place name", "placename", "address", "location", 
   		"village", "address or village", "town", "city", "place", 

@@ -11,8 +11,8 @@ import java.util.GregorianCalendar;
  * The GeoPoint class stores a coordinate and related information used
  * to populate a KML file.
  * 
- * It accepts a string as input, and uses the column numbers in the parameter
- * set to figure out which column is which.
+ * The constructor accepts a string as input, and uses the column numbers 
+ * in the parameter set to figure out which column is which.
  */
 class GeoPoint {
   IsStringANumberChecker numChecker = new IsStringANumberChecker();

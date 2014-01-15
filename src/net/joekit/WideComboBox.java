@@ -19,14 +19,17 @@ public class WideComboBox extends JComboBox {
   public WideComboBox() {
   }
 
+  @SuppressWarnings("unchecked")
   public WideComboBox(final Object items[]) {
     super(items);
   }
 
+  @SuppressWarnings("unchecked")
   public WideComboBox(Vector items) {
     super(items);
   }
  
+  @SuppressWarnings("unchecked")
   public WideComboBox(ComboBoxModel aModel) {
     super(aModel);
   }

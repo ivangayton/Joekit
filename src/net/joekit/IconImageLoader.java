@@ -9,6 +9,13 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Utility class that loads an icon and provides a BufferedImage to all of the 
+ * other classes.  Also has a clumsy recoloring method which works well enough
+ * for simple icons.
+ * 
+ * @author Ivan
+ */
 public class IconImageLoader{
   public BufferedImage icon;
   public BufferedImage coloredIcon;
