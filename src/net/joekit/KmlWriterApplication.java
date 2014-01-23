@@ -29,11 +29,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  * Main class for the application.
  * 
- * The various popups live here too.  
- * 
- * TODO The legend popup needs some work, so that people can modify the 
- * color list for thier legends.
- * 
  * @author Ivan
  */
 public class KmlWriterApplication extends JFrame 
@@ -42,7 +37,7 @@ public class KmlWriterApplication extends JFrame
   static {
     // Disable custom L&F.  This is a workaround for the joekit.jar
     // being unsigned, which causes a classpath loading problem on
-    // MacOS.  TODO(pablo): change build.xml jar rule to sign the jar?
+    // MacOS.  TODO(Pablo): change build.xml jar rule to sign the jar?
     try {  
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());  
     } catch (Exception e) {  
@@ -166,7 +161,7 @@ public class KmlWriterApplication extends JFrame
       public void mouseClicked(java.awt.event.MouseEvent evt) {
         int catIndex = (evt.getY()-35)/20;
         System.out.println("x: " + evt.getX() + ", y: " + evt.getY() + ", index: " + catIndex);
-        // TODO make this do something about it; users should be able to change the colorlist
+        // TODO make this do something about it
       }
     });
     JScrollPane sP = new JScrollPane(legendLabel);

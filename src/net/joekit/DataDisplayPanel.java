@@ -54,10 +54,7 @@ public class DataDisplayPanel extends JPanel {
     if(params.iconIsImageFile){
       try {
         /* TODO this works when you first select the image, but when refreshing 
-         * it runs out of heap space if the icon image file is huge.  Temporarily
-         * solved by the kludge below, which simply forestalls large images.  Still,
-         * that's not ideal because some people may want to use large images.
-         */
+         * it runs out of heap space if the icon image file is huge.*/
         icon = ImageIO.read(params.iconFile); 
         // Check that it's not too big (say 200 pixels), and scale it down if it is
         int iconLargestDim = icon.getWidth() > icon.getHeight() ? 

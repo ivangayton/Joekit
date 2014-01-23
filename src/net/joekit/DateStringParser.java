@@ -8,12 +8,6 @@ import java.util.GregorianCalendar;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.pojava.datetime.*;
 
-/* TODO go through all Date columns looking for months over 13 (to catch
- * American date formats).  Assume that of the first two two-digit numbers
- * separated by a delimiter, the one that goes over 12 represents day and 
- * the user is American.  If they both go over 12, then assume that the user 
- * is George W. Bush, or possibly Kid Rock.
- */
 public class DateStringParser {
   Date parseDate(String dateString){
     DateTimeConfig.globalEuropeanDateFormat();
@@ -46,7 +40,8 @@ public class DateStringParser {
       Date dateToReturn = DateUtil.getJavaDate(Double.parseDouble(dateString));
       dateStringToReturn = dateFormat.format(dateToReturn);
     }else{
-      /* Ok, so it's not a straight-up number, let's try a date string,*/
+      /* Ok, so it's not a straight-up number, let's try a date string, though if
+       * it's an American MM/dd/yyyy we're fucked (what a dumb format anyway) */
       try{
         DateTime dateTime = new DateTime();
         dateTime = DateTime.parse(dateString);

@@ -33,7 +33,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Ivan
  */
 public class ConsolePanel extends JPanel implements ActionListener, ChangeListener {
-    //Dummy value to quiet serialization checks.  
   private static final long serialVersionUID = 1L;
 
     // Allows access to the main class, including methods for launching dialogs
@@ -53,8 +52,7 @@ public class ConsolePanel extends JPanel implements ActionListener, ChangeListen
     iconFilenameChooserButton, gazetteerFilenameChooserButton;
 
   /* Columns and their associated dropdown boxes (user can define
-   * which columns control what attribute of the eventual output file). 
-   * */
+   * which columns control what attribute of the eventual output file). */
   protected WideComboBox latField, longField, labelField, nameField, sizeField, colorField,
     startDateField, endDateField;
   protected JLabel latL, longL, labelL, sizeL, colorL, startDateL, endDateL;
@@ -395,9 +393,7 @@ public class ConsolePanel extends JPanel implements ActionListener, ChangeListen
     }
 
     if (e.getSource() == previewButton) {
-      /*TODO what if the icon file string is a URL? 
-      Assuming we want things to work offline, perhaps 
-      in this case we should use a placeholder image?*/
+      //TODO what if the icon file string is a URL?
       try{
         params.iconFile = new File(iconFilenameText.getText());
         if(params.iconFile.length() > 0){
@@ -501,16 +497,7 @@ public class ConsolePanel extends JPanel implements ActionListener, ChangeListen
     if (returnVal == JFileChooser.APPROVE_OPTION) {
       kwa.createProgressBar();
       params = new ParameterSet(); // Resets all parameters 
-      
-      /*TODO Reset the GUI to match the newly reset parameters
-       * In general Joekit reacts badly to restarting by hitting
-       * the Input button and loading a new file (the old settings
-       * persist in some parts of the GUI and the parameters.
-       * We should either disable the input button, or really fix
-       * the way in which it resets itself when a new input file 
-       * is chosen.
-       */
-      
+      // TODO Reset the GUI to match the newly reset parameters
       params.inputFile = fileChooser.getSelectedFile();
       inputFilenameText.setText(params.inputFile.getAbsolutePath());
  
@@ -604,17 +591,15 @@ public class ConsolePanel extends JPanel implements ActionListener, ChangeListen
       /* Check to see if lat and long columns are set; will have happened
        * automatically if there are columns named appropriately for lat and long.
        * Don't know if this is necessary now...*/
-      
       // TODO use booleans instead of this clumsy check
-      
       if((lfr.latC>0 || lfr.longC>0) && lfr.latC != lfr.longC){
         params.longColumnExists = true;
         params.latColumnExists = true;
-        //System.out.println("found lat and long columns");
+        System.out.println("found lat and long columns");
       }else{
         params.longColumnExists = false;
         params.latColumnExists = false;
-        //System.out.println("didn't find lat and long columns");
+        System.out.println("didn't find lat and long columns");
         }
       if(params.gazetteerExists){
         GazetteerFileLinker gzf = new GazetteerFileLinker(params);
@@ -627,14 +612,9 @@ public class ConsolePanel extends JPanel implements ActionListener, ChangeListen
       }
       refreshDisplayPanel();
 
-      /* TODO create a progress tracking system that actually knows how
-       * far into the input file we are. It should be possible to track 
-       * where we are in the file, even if just by brute force - how many
-       * bytes is the file and how many have we processed.  With the current
-       * non-system (this progress bar doesn't actually connect to any 
-       * quantity related to progress, users are sitting in front of an 
-       * apparently frozen program.
-       */
+      // Pretty cheesy, but keeps the progress bar visible until input file choice dealt with.
+      // A better system would have this bar updating as the ListFileReader churns through the 
+      // input file. 
       kwa.setProgressBar(100);
       kwa.destroyProgressBar();
     } else {
@@ -746,8 +726,7 @@ public class ConsolePanel extends JPanel implements ActionListener, ChangeListen
            * offending row to the orphanList string.*/
           oneFailed = true;
           try{
-            if (!failedLinesList.contains(str[params.nameC])) { /*TODO This won't filter 
-                                          out duplicates with different capitalization*/
+            if (!failedLinesList.contains(str[params.nameC])) { // TODO This won't filter out duplicates with different capitalization
               failedLinesList += "Row " + lineCheck + ": " + str[params.nameC] + "\n";
             }
           }catch(Exception e){
@@ -781,15 +760,9 @@ public class ConsolePanel extends JPanel implements ActionListener, ChangeListen
     }
   }
 
-  /* TODO create a better UI! 
-   * This is crazy complicated; people are always asking for features
-   * that already exist (they don't know how to find them amongs the
-   * mess of buttons), and those just who want a basic map are stymied
-   * by the complexity of the UI.
-   */
   private void createTheWidgetInstances() {
     inputFilenameText = new JTextField("Please select an input file (.xls, .xlsx, .csv, or .txt)");
-    Font font = new Font(inputFilenameText.getFont().getFontName(getLocale()), Font.PLAIN, 10);
+    Font font = new Font(inputFilenameText.getFont().getFontName(getLocale()), Font.PLAIN, 9);
     inputFilenameText.setFont(font);
     inputFilenameText.addActionListener(this);
     inputFilenameChooserButton = new JButton("Input");

@@ -1,12 +1,5 @@
 package net.joekit;
 
-/**
- * Just what the name suggests.  
- * TODO add some hints if a number seems to be a date or some 
- * coordinates.
- * 
- * @author Ivan
- */
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
