@@ -16,7 +16,6 @@ import java.util.regex.Pattern;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -55,10 +54,13 @@ class GazetteerFileLinker {
   boolean isXlsx = false, isXls = false, isCsv = false, 
       isTxt = false, isVib = false, isKml = false, isKmz = false;
   
-  String[] latColumnNames = {"lat","latitude", "north", "northing"};
-  String[] longColumnNames = {"long", "longitude", "east", "easting"};
-  String[] nameColumnNames = {"name", "id", "place name", "placename", "address", "location", 
-    "village", "address or village", "town", "city", "place"};
+  // This list duplicates in a few places
+  String[] latColumnNames = {"lat","latitude", "north", "northing", "ycoord"};
+  String[] longColumnNames = {"long", "longitude", "east", "easting", "xcoord"};
+  String[] nameColumnNames = {"name", "full_name", "full_name_",
+      "id", "place name", "placename", "address", "location", 
+      "village", "address or village", "town", "city", "place", 
+      "ward", "adm1", "adm2", "adm3", "geo id", "geo_id"};
 
   BufferedReader br;
   FileInputStream fileInputStream;

@@ -51,12 +51,13 @@ class ListFileReader {
   
   boolean hasEpiWeek = false;
   
-  String[] latColumnNames = {"lat","latitude", "north", "northing"};
-  String[] longColumnNames = {"long", "longitude", "east", "easting"};
+  // This needs to be done with regex to match partials
+  String[] latColumnNames = {"lat","latitude", "north", "northing", "ycoord"};
+  String[] longColumnNames = {"long", "longitude", "east", "easting", "xcoord"};
   String[] nameColumnNames = {"name", "full_name", "full_name_",
   		"id", "place name", "placename", "address", "location", 
   		"village", "address or village", "town", "city", "place", 
-      "ward", "adm1", "adm2", "adm3"};
+      "ward", "adm1", "adm2", "adm3", "geo id", "geo_id"};
   String[] labelColumnNames = {"name", "id", "label", "place name", "placename",
       "full_name", "full_name_", "town", "city", "place"};
   String[] sizeColumnNames = {"size"};
@@ -64,7 +65,7 @@ class ListFileReader {
   String[] startDateColumnNames = {"date", "start date", "startdate", "start", "begin", "time", 
     "week", "date of admission"};
   String[] endDateColumnNames = {"end date", "enddate", "finish", "end"};
-  String[] epiWeekColumnNames = {"epi week"};
+  String[] epiWeekColumnNames = {"epi week", "epi_week", "ew"};
 
   double[] columnMinValue, columnMaxValue;
   BufferedReader br;
