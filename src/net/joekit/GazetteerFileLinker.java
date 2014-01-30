@@ -56,7 +56,7 @@ class GazetteerFileLinker {
   
   // This list duplicates in a few places
   String[] latColumnNames = {"lat","latitude", "north", "northing", "ycoord"};
-  String[] longColumnNames = {"long", "longitude", "east", "easting", "xcoord"};
+  String[] longColumnNames = {"long", "lon", "longitude", "east", "easting", "xcoord"};
   String[] nameColumnNames = {"name", "full_name", "full_name_",
       "id", "place name", "placename", "address", "location", 
       "village", "address or village", "town", "city", "place", 
