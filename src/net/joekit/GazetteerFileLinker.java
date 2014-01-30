@@ -53,14 +53,6 @@ class GazetteerFileLinker {
   
   boolean isXlsx = false, isXls = false, isCsv = false, 
       isTxt = false, isVib = false, isKml = false, isKmz = false;
-  
-  // This list duplicates in a few places
-  String[] latColumnNames = {"lat","latitude", "north", "northing", "ycoord"};
-  String[] longColumnNames = {"long", "lon", "longitude", "east", "easting", "xcoord"};
-  String[] nameColumnNames = {"name", "full_name", "full_name_",
-      "id", "place name", "placename", "address", "location", 
-      "village", "address or village", "town", "city", "place", 
-      "ward", "adm1", "adm2", "adm3", "geo id", "geo_id"};
 
   BufferedReader br;
   FileInputStream fileInputStream;
@@ -526,8 +518,8 @@ class GazetteerFileLinker {
   void getColumnNumbers(String[] splitHeader) {
     gazLatC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<latColumnNames.length;iter++){
-        if (Pattern.matches(latColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.latColumnNames.length;iter++){
+        if (Pattern.matches(params.latColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (gazLatC==0){
             gazLatC = it;
@@ -540,8 +532,8 @@ class GazetteerFileLinker {
 	      
     gazLongC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<latColumnNames.length;iter++){
-        if (Pattern.matches(longColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.latColumnNames.length;iter++){
+        if (Pattern.matches(params.longColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (gazLongC==0){
             gazLongC = it;
