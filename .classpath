@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/run/media/ivan/DATA/workspace/JoekitEclipse/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="/run/media/ivan/DATA/workspace/JoekitEclipse/lib/junit-4.9.jar"/>
-	<classpathentry kind="lib" path="/run/media/ivan/DATA/workspace/JoekitEclipse/lib/poi-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="/run/media/ivan/DATA/workspace/JoekitEclipse/lib/poi-ooxml-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="/run/media/ivan/DATA/workspace/JoekitEclipse/lib/poi-ooxml-schemas-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="/run/media/ivan/DATA/workspace/JoekitEclipse/lib/pojava-2.8.1.jar"/>
-	<classpathentry kind="lib" path="/run/media/ivan/DATA/workspace/JoekitEclipse/lib/xmlbeans-2.3.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/igayton/git/Joekit/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/igayton/git/Joekit/lib/junit-4.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/igayton/git/Joekit/lib/poi-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="C:/Users/igayton/git/Joekit/lib/poi-ooxml-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="C:/Users/igayton/git/Joekit/lib/poi-ooxml-schemas-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="C:/Users/igayton/git/Joekit/lib/pojava-2.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/igayton/git/Joekit/lib/xmlbeans-2.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

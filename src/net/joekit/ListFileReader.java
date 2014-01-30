@@ -51,22 +51,6 @@ class ListFileReader {
   
   boolean hasEpiWeek = false;
   
-  // This needs to be done with regex to match partials
-  String[] latColumnNames = {"lat","latitude", "north", "northing", "ycoord"};
-  String[] longColumnNames = {"long", "longitude", "east", "easting", "xcoord"};
-  String[] nameColumnNames = {"name", "full_name", "full_name_",
-  		"id", "place name", "placename", "address", "location", 
-  		"village", "address or village", "town", "city", "place", 
-      "ward", "adm1", "adm2", "adm3", "geo id", "geo_id"};
-  String[] labelColumnNames = {"name", "id", "label", "place name", "placename",
-      "full_name", "full_name_", "town", "city", "place"};
-  String[] sizeColumnNames = {"size"};
-  String[] colorColumnNames = {"color", "colour"};
-  String[] startDateColumnNames = {"date", "start date", "startdate", "start", "begin", "time", 
-    "week", "date of admission"};
-  String[] endDateColumnNames = {"end date", "enddate", "finish", "end"};
-  String[] epiWeekColumnNames = {"epi week", "epi_week", "ew"};
-
   double[] columnMinValue, columnMaxValue;
   BufferedReader br;
   FileInputStream fileInputStream;
@@ -385,8 +369,8 @@ class ListFileReader {
   void getColumnNumbers(String[] splitHeader) {
     latC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<latColumnNames.length;iter++){
-        if (Pattern.matches(latColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.latColumnNames.length;iter++){
+        if (Pattern.matches(params.latColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (latC==0){
             latC = it;
@@ -398,8 +382,8 @@ class ListFileReader {
 	      
     longC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<latColumnNames.length;iter++){
-        if (Pattern.matches(longColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.latColumnNames.length;iter++){
+        if (Pattern.matches(params.longColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (longC==0){
             longC = it;
@@ -410,8 +394,8 @@ class ListFileReader {
     }
     nameC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<nameColumnNames.length;iter++){
-        if (Pattern.matches(nameColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.nameColumnNames.length;iter++){
+        if (Pattern.matches(params.nameColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (nameC==0){
             nameC = it;
@@ -422,8 +406,8 @@ class ListFileReader {
     }
     labelC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<labelColumnNames.length;iter++){
-        if (Pattern.matches(labelColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.labelColumnNames.length;iter++){
+        if (Pattern.matches(params.labelColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (labelC==0){
             labelC = it;
@@ -434,8 +418,8 @@ class ListFileReader {
     }
     sizeC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<sizeColumnNames.length;iter++){
-        if (Pattern.matches(sizeColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.sizeColumnNames.length;iter++){
+        if (Pattern.matches(params.sizeColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (sizeC==0){
             sizeC = it;
@@ -446,8 +430,8 @@ class ListFileReader {
     }
     colorC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<colorColumnNames.length;iter++){
-        if (Pattern.matches(colorColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.colorColumnNames.length;iter++){
+        if (Pattern.matches(params.colorColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (colorC==0){
             colorC = it;
@@ -458,8 +442,8 @@ class ListFileReader {
     }
     startDateC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<startDateColumnNames.length;iter++){
-        if (Pattern.matches(startDateColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.startDateColumnNames.length;iter++){
+        if (Pattern.matches(params.startDateColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (startDateC==0){
             startDateC = it;
@@ -470,8 +454,8 @@ class ListFileReader {
     }
     endDateC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<endDateColumnNames.length;iter++){
-        if (Pattern.matches(endDateColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.endDateColumnNames.length;iter++){
+        if (Pattern.matches(params.endDateColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (endDateC==0){
             endDateC = it;
@@ -482,8 +466,8 @@ class ListFileReader {
     }
     epiWeekC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<epiWeekColumnNames.length;iter++){
-        if (Pattern.matches(epiWeekColumnNames[iter].toLowerCase().
+      for (int iter=0;iter<params.epiWeekColumnNames.length;iter++){
+        if (Pattern.matches(params.epiWeekColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           hasEpiWeek = true;
           if (epiWeekC==0){
