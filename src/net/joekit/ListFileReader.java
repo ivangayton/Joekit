@@ -382,7 +382,7 @@ class ListFileReader {
 	      
     longC=0;
     for (int it=0;it<dataColumns;it++){
-      for (int iter=0;iter<params.latColumnNames.length;iter++){
+      for (int iter=0;iter<params.longColumnNames.length;iter++){
         if (Pattern.matches(params.longColumnNames[iter].toLowerCase().
             replaceAll("\\s+", ""), splitHeader[it].toLowerCase().replaceAll("\\s+", ""))){
           if (longC==0){
