@@ -1,1 +1,1 @@
-The software is covered by teh GPSV2
+GPL V2
