@@ -325,6 +325,8 @@ class ParameterSet {
   }
   
   void setMaxMins(){
+    System.out.println("Now trying to set maxima and minima for all "
+        + outputHeaders.length + " columns");
     columnMaxes = new Double[outputHeaders.length];
     columnMins =  new Double[outputHeaders.length];
     columnMids = new Double[outputHeaders.length];
@@ -335,6 +337,7 @@ class ParameterSet {
     for(String[] str: outputDataSet){
       int columnIndexer = 0;
       for(String toTest: str){
+        System.out.println(columnIndexer + ", " + outputHeaders[columnIndexer]);
         double tester = 0;
         boolean foundAValue = false;
         // if it's a number, store it

@@ -91,7 +91,7 @@ public class KmlWriterApplication extends JFrame
     helpMenu.add(manual);
     
     
-    setLocation(0, 0);
+    setLocation(100, 100);
     pack();
     setResizable(false);
     setVisible(true);
