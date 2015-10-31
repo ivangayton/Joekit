@@ -99,10 +99,17 @@ class ListFileReader {
 
     /* Create a reference (shallow copy, or clone) of the dataset.  This doesn't
      * double up the memory required, because the outputDataSet is, unless we do
-     * something to establish otherwise, just a reference to the same list.*/
+     * something to establish otherwise, just a reference to the same list.
+     */
     params.outputDataSet = (ArrayList<String[]>) params.inputDataSet.clone();
     params.inputHeaders = splitHeader;
     params.outputHeaders = params.inputHeaders;
+    
+    /*
+    for(String header : params.inputHeaders){
+      System.out.println(header);
+    }
+    */
   }
 	
   void initializeVibFile(File inptFl) {
@@ -217,7 +224,7 @@ class ListFileReader {
         }
         }
       }
-      getColumnNumbers(splitHeader);
+      findParticularColumns(splitHeader);
       columnMinValue = new double[dataColumns];
       columnMaxValue = new double[dataColumns];
       dataRows = worksheet.getLastRowNum() + 1;
@@ -310,11 +317,12 @@ class ListFileReader {
     try {
       br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "UTF8"));
       String header = br.readLine();
+      System.out.println(header);
       splitHeader = header.split(separator);
 
       dataColumns = splitHeader.length;
 	      
-      getColumnNumbers(splitHeader);
+      findParticularColumns(splitHeader);
 	      
       columnMinValue = new double[dataColumns];
       columnMaxValue = new double[dataColumns];
@@ -366,7 +374,7 @@ class ListFileReader {
   }
 
   // TODO(pablo): simplify
-  void getColumnNumbers(String[] splitHeader) {
+  void findParticularColumns(String[] splitHeader) {
     latC=0;
     for (int it=0;it<dataColumns;it++){
       for (int iter=0;iter<params.latColumnNames.length;iter++){
